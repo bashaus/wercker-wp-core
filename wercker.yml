@@ -1,0 +1,21 @@
+box: php:7.1
+
+build:
+  steps:
+    - script:
+      name: remove git
+      code: |
+        rm -rf $WERCKER_ROOT/.git
+        rm -rf $WERCKER_ROOT/.gitignore
+
+    - script:
+      name: download wp-cli
+      code: |
+        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        chmod +x $WERCKER_ROOT/wp-cli.phar
+        php $WERCKER_ROOT/wp-cli.phar --info
+
+publish:
+  steps:
+    - internal/publish-step:
+        owner: bashaus

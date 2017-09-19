@@ -1,0 +1,19 @@
+name: wp-core
+version: 0.0.1
+summary: |
+  install the WordPress Core and generate salts.
+tags:
+  - wordpress
+  - wp-cli
+  - wp
+  - php
+
+properties:
+  - name: core-version
+    type: string
+    required: true
+
+  - name: generate-salts
+    type: bool
+    required: false
+    default: "true"
